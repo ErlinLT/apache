@@ -24,3 +24,37 @@
     }
   }
 }
+
+
+
+
+# Listar las primeras filas
+SELECT * FROM dfs.tmp.`homes.csv` LIMIT 10;
+
+# Filtrar por precio
+SELECT address, price 
+FROM dfs.tmp.`homes.csv`
+WHERE CAST(`price` AS DOUBLE) > 300000;
+
+# Contar propiedades por ciudad
+SELECT city, COUNT(*) as property_count 
+FROM dfs.tmp.`homes.csv`
+GROUP BY city
+ORDER BY property_count DESC;
+
+# Filtrar por número de habitaciones
+SELECT address, bedrooms 
+FROM dfs.tmp.`homes.csv`
+WHERE CAST(`bedrooms` AS INT) >= 3;
+
+# Promedio de precio por ciudad
+SELECT city, AVG(CAST(`price` AS DOUBLE)) as average_price 
+FROM dfs.tmp.`homes.csv`
+GROUP BY city
+ORDER BY average_price DESC;
+
+# Exportar resultados a un nuevo archivo CSV
+CREATE TABLE dfs.tmp.`result_homes.csv` AS
+SELECT address, price 
+FROM dfs.tmp.`homes.csv`
+WHERE CAST(`price` AS DOUBLE) > 300000;

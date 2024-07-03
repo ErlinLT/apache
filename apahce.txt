@@ -58,3 +58,8 @@ CREATE TABLE dfs.tmp.`result_homes.csv` AS
 SELECT address, price 
 FROM dfs.tmp.`homes.csv`
 WHERE CAST(`price` AS DOUBLE) > 300000;
+
+
+SELECT address, price 
+FROM dfs.tmp.`/tmp/homes.csv`
+WHERE CAST(price AS DOUBLE) > 300000;

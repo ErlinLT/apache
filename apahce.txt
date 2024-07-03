@@ -63,3 +63,8 @@ WHERE CAST(`price` AS DOUBLE) > 300000;
 SELECT address, price 
 FROM dfs.tmp.`/tmp/homes.csv`
 WHERE CAST(price AS DOUBLE) > 300000;
+
+
+SELECT *
+FROM dfs.tmp.`/tmp/homes.csv`
+WHERE CAST(rooms AS INT) > 5;
